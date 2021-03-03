@@ -19,11 +19,15 @@ yapf
 # API
 gcsfs
 google-cloud-storage
-mlflow
 s3fs
+os
+fastapi
+
 
 # utilities
 six>=1.14
 joblib
 memoized-property
 termcolor
+
+

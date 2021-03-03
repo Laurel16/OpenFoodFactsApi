@@ -1,3 +1,27 @@
+
+# ----------------------------------
+#         Vincent
+# ----------------------------------
+
+PROJECT_ID=
+DOCKER_IMAGE=
+REGION=
+
+run_local:
+	-@ uvicorn api.api:app --reload
+
+docker_build:
+	-@ gcloud build -t  .
+
+docker_run:
+	-@ gcloud
+
+cloud_push:
+	-@ gcloud
+
+cloud_deploy:
+	-@ gcloud
+
 # ----------------------------------
 #          INSTALL & TEST
 # ----------------------------------
