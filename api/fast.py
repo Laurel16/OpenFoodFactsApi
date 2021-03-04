@@ -25,13 +25,14 @@ def index():
 @app.get("/predict-category")
 def predict_cat(text: str):
 
-    cat = model.predict(txt)
+    cat = model.predict([txt])
 
     return {"category": cat}
 
 @app.get("/predict_probabilities")
 def predict_proba(text: str):
 
-    probas = model.predict_proba(txt)
+    probas = model.predict_proba([txt])
+    #change to the equivalent for Ridge model
 
     return {"probabilities": probas}
