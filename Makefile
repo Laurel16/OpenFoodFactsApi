@@ -19,10 +19,11 @@ cloud_set_project:
 	-@gcloud config set project ${PROJECT_ID}
 
 cloud_push:
-	-@ gcloud
+	-@ docker push eu.gcr.io/${PROJECT_ID}/${DOCKER_IMAGE_NAME}
 
 cloud_deploy:
-	-@ gcloud
+	-@ gcloud run deploy --image eu.gcr.io/${PROJECT_ID}/${DOCKER_IMAGE_NAME} --platform managed --region europe-west1 \
+												--cpu 2 --memory 4Gi --min-instances 1
 
 # ----------------------------------
 #          INSTALL & TEST
