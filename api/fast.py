@@ -3,6 +3,7 @@ import os
 import joblib
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from api.helpers import pred_or_hesitate, get_probabilities_from_ocr, list_categories
 
 app = FastAPI()
 
@@ -32,10 +33,14 @@ async def predict_cat(text: str):
 
     return {"category": cat.item(0)}
 
-#@app.get("/predict_probabilities")
-#def predict_proba(text: str):
+@app.get("/predict_probabilities")
+async def predict_proba(text: str):
 
-    #probas = model.predict_proba([text])
+    probas = get_probabilities_from_ocr(model, text)
+
+    result = pred_or_hesitate(probas, list_categories)
     #change to the equivalent for Ridge model
 
-    #return {"probabilities": probas}
+    return {"result": result}
+
+
