@@ -3,18 +3,20 @@
 #         Vincent
 # ----------------------------------
 
-PROJECT_ID=
-DOCKER_IMAGE=
-REGION=
+PROJECT_ID=possible-flag-305109
+DOCKER_IMAGE_NAME=apioff
 
 run_local:
 	-@ uvicorn api.fast:app --reload
 
 docker_build:
-	-@ gcloud build -t  .
+	-@ docker build -t eu.gcr.io/${PROJECT_ID}/${DOCKER_IMAGE_NAME} .
 
 docker_run:
-	-@ gcloud
+	-@ docker run -e PORT=8000 -p 8000:8000 eu.gcr.io/${PROJECT_ID}/${DOCKER_IMAGE_NAME}
+
+cloud_set_project:
+	-@gcloud config set project ${PROJECT_ID}
 
 cloud_push:
 	-@ gcloud
