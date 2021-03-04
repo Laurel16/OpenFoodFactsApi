@@ -8,7 +8,7 @@ DOCKER_IMAGE=
 REGION=
 
 run_local:
-	-@ uvicorn api.api:app --reload
+	-@ uvicorn api.fast:app --reload
 
 docker_build:
 	-@ gcloud build -t  .
