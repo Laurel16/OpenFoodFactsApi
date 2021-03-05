@@ -52,7 +52,6 @@ def pred_or_hesitate(proba, list_cat):
     decision_threshold = 0.012
     indices_max = np.argsort([-x for x in proba])
     if (proba[indices_max[0]] - proba[indices_max[1]]) > decision_threshold:
-        print("predict")
-        return list_cat[indices_max[0]]
-    return f"J'hésite entre '{list_cat[indices_max[0]]}' ({round(proba[indices_max[0]], 2) * 100} %) et '{list_cat[indices_max[1]]}' ({round(proba[indices_max[1]], 2) *100} %)"
+        return f"J'ai trouvé ! La catégorie est '{list_cat[indices_max[0]]}'"
+    return f"J'hésite entre '{list_cat[indices_max[0]]}' et '{list_cat[indices_max[1]]}'"
 
