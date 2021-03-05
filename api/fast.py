@@ -19,7 +19,6 @@ app.add_middleware(
 
 model = joblib.load("model.joblib")
 
-# Endpoint: Health
 @app.get("/")
 def index():
     return {"Status": "Up and Running"}
